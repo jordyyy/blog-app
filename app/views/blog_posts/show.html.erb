@@ -1,0 +1,47 @@
+<h1><%= @blog_post.title %></h1>
+<br>
+<div class="container-fluid">
+ <div class="card light-gray darken-1">
+  <div class="card-content black-text">
+    <p id="notice"><%= notice %></p>
+
+
+    <p>
+      <strong>by:</strong>
+      <%= @blog_post.author %>
+    </p>
+    <br>
+      <%= @blog_post.blog_entry %>
+    </p>
+    <br>
+      <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+  </div>
+</div>
+<div class="container">
+ <div class="card cyan lighten-5">
+  <div class="card-content black-text">
+  <h5>Comments:</h5>
+    <% @blog_post.comments.each do |comment| %>
+     <p>
+      <strong><%= comment.author %> said: </strong>
+      <%= comment.comment_entry %>
+      <% end %>
+  </div>
+ </div>
+</div>
+
+<div class="row">
+    <div class="card grey lighten-4">
+      <div class="card-content black-text">
+        <div>
+          <%= render 'comments/form' %>
+        </div>
+      </div>
+        <div style="margin:10px;padding:10px;">
+          <%= link_to 'Back', blog_posts_path %>
+        </div>
+      </div>
+    </div>
+</div>
+
+
